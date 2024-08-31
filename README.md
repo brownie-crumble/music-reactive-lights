@@ -28,7 +28,7 @@ This project is designed to bring your music to life with lights. By using a sou
 
 Below is the block diagram for the project setup:
 
-![Circuit Diagram](https://github.com/brownie-crumble/music-reactive-lights/raw/main/circuit-diagram.png)  
+![Circuit Diagram](https://github.com/brownie-crumble/music-reactive-lights/raw/main/circuitdiagram.png)  
 
 ## How It Works
 

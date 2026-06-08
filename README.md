@@ -1,69 +1,73 @@
-# Music Reactive Lights using Arduino Nano and NeoPixel LED Strip
+# 🎵 Music Reactive Lights
 
-This project creates a vibrant music-reactive light system using an Arduino Nano, a sound sensor, and a NeoPixel LED strip. The LEDs react dynamically to sound, changing colors and brightness based on the audio input, providing a visual representation of the music.
+An Arduino Nano + NeoPixel LED system that reacts to music in real-time — sound is captured via a microphone sensor, processed on-board, and mapped to dynamic color and brightness changes across the LED strip.
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Components Required](#components-required)
-- [Circuit Diagram](#circuit-diagram)
-- [How It Works](#how-it-works)
-- [Setup Instructions](#setup-instructions)
-- [Troubleshooting](#troubleshooting)
+> Built with: Arduino Nano · WS2812B NeoPixel Strip · Sound Sensor (Microphone Module)
 
-## Introduction
+---
 
-This project is designed to bring your music to life with lights. By using a sound sensor to capture audio signals, the system controls a strip of NeoPixel LEDs to create a light show that responds in real-time to the music's rhythm and intensity.
+## Demo
 
-## Components Required
+<!-- Once you have a video/GIF, upload it to the repo and replace this line: -->
+<!-- ![Demo GIF](demo.gif) -->
+> 📹 Demo video coming soon
 
-- Arduino Nano
-- NeoPixel LED Strip (WS2812B or similar)
-- Sound Sensor (Microphone module)
-- 470Ω resistor (for data line)
-- 1000µF capacitor (for power stabilization)
-- Breadboard and jumper wires
-- Power supply for the LED strip
-
-## Circuit Diagram
-
-Below is the block diagram for the project setup:
-
-![Circuit Diagram](https://github.com/brownie-crumble/music-reactive-lights/raw/main/circuitdiagram.png)  
+---
 
 ## How It Works
 
-1. Sound Detection:
-   - The sound sensor captures audio signals and converts them into an electrical signal.
-   
-2. Signal Processing:
-   - The Arduino Nano processes the signal and determines the intensity and rhythm of the audio.
+1. **Sound Detection** — Microphone module captures audio and outputs an analog signal
+2. **Signal Processing** — Arduino Nano reads the signal on A0, maps amplitude to LED parameters
+3. **LED Control** — NeoPixel strip responds with color and brightness changes in real-time
 
-3. LED Control:
-   - The Arduino controls the NeoPixel LED strip, adjusting the colors and brightness based on the processed audio signal.
+---
 
-## Setup Instructions
+## Circuit Diagram
 
-1. Connect the Sound Sensor:
-   - VCC to 5V on Arduino
-   - GND to GND on Arduino
-   - OUT to A0 on Arduino
+![Circuit Diagram](https://github.com/brownie-crumble/music-reactive-lights/raw/master/circuit%20diagram.png)
 
-2. Connect the NeoPixel LED Strip:
-   - DIN to Pin D6 on Arduino (through a 470Ω resistor)
-   - +5V to 5V power supply (with a 1000µF capacitor across +5V and GND)
-   - GND to common ground with Arduino
+---
 
-3. Power the System:
-   - Connect the power supply to the LED strip and ensure all connections are secure.
+## Components
+
+| Component | Spec |
+|---|---|
+| Microcontroller | Arduino Nano |
+| LED Strip | WS2812B NeoPixel (or similar) |
+| Sound Sensor | Microphone module (analog out) |
+| Resistor | 470Ω (data line protection) |
+| Capacitor | 1000µF (power stabilization) |
+
+---
+
+## Wiring
+
+**Sound Sensor → Arduino**
+- VCC → 5V
+- GND → GND
+- OUT → A0
+
+**NeoPixel Strip → Arduino**
+- DIN → D6 (via 470Ω resistor)
+- +5V → External 5V supply (with 1000µF cap across +5V and GND)
+- GND → Common GND
+
+---
+
+## Setup
+
+1. Clone this repo
+2. Open `code1.ino` in Arduino IDE
+3. Install the `Adafruit NeoPixel` library (Library Manager)
+4. Upload to Arduino Nano
+5. Wire up per the diagram above and power on
+
+---
 
 ## Troubleshooting
 
-- LEDs Not Responding:
-  - Check the connections and ensure the power supply is sufficient.
-
-- Inconsistent Colors:
-  - Verify the resistor and capacitor values are correct and connections are stable.
-
-- Sound Sensor Not Detecting:
-  - Make sure the sensor is properly connected and positioned to capture sound effectively.
-
+| Issue | Fix |
+|---|---|
+| LEDs not responding | Check power supply and data line resistor |
+| Inconsistent colors | Verify capacitor placement and GND connections |
+| Sensor not detecting | Reposition mic module closer to audio source |

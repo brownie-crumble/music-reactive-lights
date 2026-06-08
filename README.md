@@ -1,24 +1,21 @@
-# 🎵 Music Reactive Lights
+# Music Reactive Lights
 
-An Arduino Nano + NeoPixel LED system that reacts to music in real-time — sound is captured via a microphone sensor, processed on-board, and mapped to dynamic color and brightness changes across the LED strip.
+> Real-time audio-reactive LED system — music goes in, light show comes out.
 
-> Built with: Arduino Nano · WS2812B NeoPixel Strip · Sound Sensor (Microphone Module)
+Built with an **Arduino Nano** and a **WS2812B NeoPixel strip**, this system captures live audio through a microphone module, processes the signal on-board, and maps sound amplitude to dynamic color and brightness changes across the LED strip.
 
 ---
 
-## Demo
+## 📹 Demo
 
-<!-- Once you have a video/GIF, upload it to the repo and replace this line: -->
-<!-- ![Demo GIF](demo.gif) -->
-> 📹 Demo video coming soon
+https://github.com/brownie-crumble/music-reactive-lights/blob/master/Beats_normal.mp4
 
 ---
 
 ## How It Works
-
-1. **Sound Detection** — Microphone module captures audio and outputs an analog signal
-2. **Signal Processing** — Arduino Nano reads the signal on A0, maps amplitude to LED parameters
-3. **LED Control** — NeoPixel strip responds with color and brightness changes in real-time
+1. **Sound Detection** — Microphone module captures audio and converts it to an analog signal
+2. **Signal Processing** — Arduino reads amplitude on A0 and maps it to LED parameters
+3. **LED Control** — NeoPixel strip responds with real-time color and brightness changes
 
 ---
 
@@ -30,27 +27,35 @@ An Arduino Nano + NeoPixel LED system that reacts to music in real-time — soun
 
 ## Components
 
-| Component | Spec |
+| Component | Details |
 |---|---|
 | Microcontroller | Arduino Nano |
 | LED Strip | WS2812B NeoPixel (or similar) |
 | Sound Sensor | Microphone module (analog out) |
-| Resistor | 470Ω (data line protection) |
-| Capacitor | 1000µF (power stabilization) |
+| Resistor | 470Ω — data line protection |
+| Capacitor | 1000µF — power stabilization |
 
 ---
 
 ## Wiring
 
-**Sound Sensor → Arduino**
-- VCC → 5V
-- GND → GND
-- OUT → A0
+**Sound Sensor → Arduino Nano**
 
-**NeoPixel Strip → Arduino**
-- DIN → D6 (via 470Ω resistor)
-- +5V → External 5V supply (with 1000µF cap across +5V and GND)
-- GND → Common GND
+| Sensor Pin | Arduino Pin |
+|---|---|
+| VCC | 5V |
+| GND | GND |
+| OUT | A0 |
+
+**NeoPixel Strip → Arduino Nano**
+
+| Strip Pin | Connection |
+|---|---|
+| DIN | D6 (via 470Ω resistor) |
+| +5V | External 5V supply |
+| GND | Common GND |
+
+> ⚠️ Place a 1000µF capacitor across +5V and GND near the strip to prevent power surges on startup.
 
 ---
 
@@ -58,16 +63,23 @@ An Arduino Nano + NeoPixel LED system that reacts to music in real-time — soun
 
 1. Clone this repo
 2. Open `code1.ino` in Arduino IDE
-3. Install the `Adafruit NeoPixel` library (Library Manager)
+3. Install **Adafruit NeoPixel** library via Library Manager
 4. Upload to Arduino Nano
-5. Wire up per the diagram above and power on
+5. Wire up per the diagram and power on
 
 ---
 
 ## Troubleshooting
 
-| Issue | Fix |
+| Symptom | Fix |
 |---|---|
-| LEDs not responding | Check power supply and data line resistor |
+| LEDs not responding | Check power supply voltage and data line resistor |
 | Inconsistent colors | Verify capacitor placement and GND connections |
-| Sensor not detecting | Reposition mic module closer to audio source |
+| Sensor not detecting sound | Reposition mic module closer to audio source |
+| Flickering LEDs | Ensure power supply can handle peak LED current draw |
+
+---
+
+## Tech Stack
+
+`Arduino` `C++` `NeoPixel` `Embedded Systems` `IoT` `Signal Processing`
